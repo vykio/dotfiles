@@ -1,0 +1,11 @@
+[user]
+	name = Alexandre Vasseur
+	email = alexandrevasseur06@gmail.com
+[core]
+	excludesfile = /home/avas/.gitignore_global
+[oh-my-zsh]
+	hide-info = 0
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
