@@ -1,0 +1,37 @@
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+plugins=(git kubectl kube-ps1 tmux)
+
+source $ZSH/oh-my-zsh.sh
+
+function get_cluster_short() {
+    local chaine="$1"
+    
+    clustername=$(echo "$chaine" | sed -n 's/teleport\.kiosc\.net-\(.*\)/\1/p')
+
+    if [ -z "$clustername" ]; then
+    	clustername=$(echo "$chaine" | sed -n 's/gke_\([^_]*\)_\(.*\)/gke\/\1/p')
+    fi
+
+    if [ -n "$clustername" ]; then
+        echo "$clustername"
+    else
+        echo "$1"
+    fi
+}
+
+KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
+KUBE_PS1_SYMBOL_ENABLE=false
+KUBE_PS1_NS_ENABLE=false
+KUBE_PS1_SEPARATOR=' '
+KUBE_PS1_PREFIX='%Bk8s:(%b'
+KUBE_PS1_PREFIX_COLOR='magenta'
+KUBE_PS1_SUFFIX='%B)%b'
+KUBE_PS1_SUFFIX_COLOR='magenta'
+PROMPT=$PROMPT'$(kube_ps1) '
+
