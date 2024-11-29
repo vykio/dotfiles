@@ -1,0 +1,23 @@
+[global_config]
+  enabled_plugins = TerminalShot, LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler
+  suppress_multiple_term_dialog = True
+  clear_select_on_copy = True
+[keybindings]
+[profiles]
+  [[default]]
+    cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 11
+    scrollback_lines = 1000
+    scrollback_infinite = True
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+      size = 900, 550
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]
